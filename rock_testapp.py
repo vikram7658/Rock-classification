@@ -1,3 +1,5 @@
+
+
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -24,44 +26,33 @@ if uploaded_file is not None:
 
 else:
     def user_input_features():
-        D_m = st.sidebar.slider('Tunnel_diameter (m)', 2.5, 13.0, 3.0)
+        D = st.sidebar.slider('D_m (m)', 2.5, 13.0, 3.0)
         Q = st.sidebar.slider('Q ', 0.001, 1.0, 93.5)
-        H_m = st.sidebar.slider('H (m)', 52.0, 850.0, 200.0)
+        H = st.sidebar.slider('H (m)', 52.0, 850.0, 200.0)
         k = st.sidebar.slider('k', 0.0, 5324.0, 4207.0)
         E = st.sidebar.slider('E', 0.0, 36.73, 20.0)
-        data = {'D_m': D,
+        data = {'D': D,
                 'Q': Q,
-                'H_m': H,
+                'H': H,
                 'k': k,
-                'E': E}
+                'E': E
+                }
         features = pd.DataFrame(data, index=[0])
         return features
-
-
     input_df = user_input_features()
 
 #combining user features with entire data set
-rock_data = pd.read_csv('rockclass.csv')
-rock = rock_data.drop(columns=['Class'])
-df = pd.concat([input_df, rock], axis=0)
+rock_data = pd.read_csv('rockclass.csv',usecols=['D', 'H', 'Q', 'k', 'E', 'Class'])
+X = rock_data.drop(['Class'], axis=1)
+df = pd.concat([input_df, X], axis=0)
 
 #displays the iser input features
 st.subheader("user Input fetures")
 
 if uploaded_file is not None:
-    st.write(df)
+    st.write(X)
 else:
     st.write('awaiting csv file to be uploaded, currently using examplefile')
-    st.write(df)
+    st.write(X)
 
-load_rf = pickle.load(open('Random_forest.pkl', 'rb'))
-
-#apply model to make prediction
-prediction = load_rf.predict(df)
-prediction_prob = load_rf.predict_proba(df)
-
-st.subheader('Prediction')
-rock_class = np.array(['sever', 'mild', 'minor'])
-st.write(rock_class[prediction])
-st.subheader('prediction probability')
-st.write(prediction_prob)
+load_rf = pickle.load(open('Random_forest.pkl','rb'))
