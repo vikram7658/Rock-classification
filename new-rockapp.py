@@ -41,10 +41,10 @@ def main():
     </div>
 """
     st.markdown(html_temp, unsafe_allow_html=True)
-    D = st.text_input("D", "Type here")
-    Q = st.text_input("Q", "Type here")
-    k = st.text_input("k", "Type here")
-    H = st.text_input("H", "Type here")
+    D = st.text_input("D(m)", "Type diameter of tunnel here")
+    Q = st.text_input("Q", "Type Q value here")
+    k = st.text_input("k (MPa)", "Type support stiffness here")
+    H = st.text_input("H (m)", "Type depth of overburden here")
     result = ""
     if st.button("predict"):
         result = rock_class(D, Q, k, H)
