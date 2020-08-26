@@ -25,35 +25,8 @@ classifier = pickle.load(pickle_in)
 
 def rock_class(D, Q, k, H):
     """lets classify the rock based on 
-    this 5 parameter
-    
--------------------------------------
-    parameters:
-        - name:D
-        in: query
-        type: number
-        required: true
-        - name: Q
-        in: query
-        type: number
-        required: true
-        - name: k
-        in: query
-        type: number
-        required: true
-        - name: E
-        in: query
-        type: number
-        required: true
-        - name: H
-        in: query
-        type: number
-        required: true
-        
-    responses:
-        200:
-            description: The output Values
-    """            
+    these 4 parameter
+    """           
             
     Prediction = classifier.predict([[D, Q, k, H]])
     print(Prediction)
