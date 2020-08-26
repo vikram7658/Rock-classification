@@ -23,7 +23,7 @@ st.image(image, use_column_width=True)
 pickle_in = open("Rockclass.pkl", "rb")
 classifier = pickle.load(pickle_in)
 
-def rock_class(D, Q, k, E, H):
+def rock_class(D, Q, k, H):
     """lets classify the rock based on 
     this 5 parameter
     
@@ -55,13 +55,12 @@ def rock_class(D, Q, k, E, H):
             description: The output Values
     """            
             
-    Prediction = classifier.predict([[D, Q, k, E, H]])
+    Prediction = classifier.predict([[D, Q, k, H]])
     print(Prediction)
     return Prediction
 
 def main():
     st.title(" Rock Class Prediction")
-    st.subheader("Data retrieved from 
     st.write("Prepared by **Vikram**. For code behind this ML app visit: https://github.com/vikram7658/Rock-Analysis")
     html_temp = """
     <div style="background-color:blue;padding:10px">
