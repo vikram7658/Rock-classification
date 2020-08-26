@@ -52,7 +52,7 @@ def main():
     st.subheader("Squeezing grade = *0: minor , 1:mild, 2:sever*")
 
     if st.button("About"):
-        st.text("Data retrieved : https://doi.org/10.1155/2018/4543984")")
+        st.text("Data retrieved : https://doi.org/10.1155/2018/4543984")
         st.text("Model and code : https://github.com/vikram7658/Rock-Analysis")
         
         
