@@ -3,6 +3,9 @@
 Created on Wed Aug 26 07:51:13 2020
 
 @author: Vikram
+
+#sample code from https://github.com/krishnaik06/Dockers/blob/master/app1.py
+
 """
 
 import numpy as np
@@ -19,7 +22,6 @@ st.image(image, use_column_width=True)
 
 pickle_in = open("Rockclass.pkl", "rb")
 classifier = pickle.load(pickle_in)
-
 
 def rock_class(D, Q, k, E, H):
     """lets classify the rock based on 
