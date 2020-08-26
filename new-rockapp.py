@@ -59,26 +59,28 @@ def rock_class(D, Q, k, E, H):
 
 def main():
     st.title(" Rock Class Prediction")
+    st.subheader("Data retrieved from 
+    st.write("Prepared by **Vikram**. For code behind this ML app visit: https://github.com/vikram7658/Rock-Analysis")
     html_temp = """
-    <div style="background-color:tomato;padding:10px">
+    <div style="background-color:blue;padding:10px">
     <h2 style="color:white;text-align:center;">Streamlit Rock Class Prediction ML App </h2>
     </div>
-    """
+"""
     st.markdown(html_temp, unsafe_allow_html=True)
     D = st.text_input("D", "Type here")
     Q = st.text_input("Q", "Type here")
     k = st.text_input("k", "Type here")
-    E = st.text_input("E", "Type here")
     H = st.text_input("H", "Type here")
     result = ""
     if st.button("predict"):
-        result = rock_class(D, Q, k, E, H)
+        result = rock_class(D, Q, k, H)
     st.success("The output is {}".format(result))
-    st.write("0 is minor, 1 is mild, 2 is sever")
+    st.subheader("Squeezing grade = *0: minor , 1:mild, 2:sever*")
+
     if st.button("About"):
-        st.text("0 is minor")
-        st.text("1 is mild")
-        st.text("2 is sever")
+        st.text("Data retrieved : https://doi.org/10.1155/2018/4543984")")
+        st.text("Model and code : https://github.com/vikram7658/Rock-Analysis")
+        
         
 if __name__=='__main__':
     main()
