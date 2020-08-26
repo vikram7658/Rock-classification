@@ -1,1 +1,1 @@
-web: sh setup.sh && streamlit run rock_testapp.py
+web: sh setup.sh && streamlit run new-rockapp.py
